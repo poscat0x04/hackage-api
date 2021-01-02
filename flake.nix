@@ -17,7 +17,7 @@
       overlay = self: super:
         let
           hpkgs = super.haskellPackages;
-          hackage-api = hpkgs.callCabal2nix "hackage-api" ./. {};
+          hackage-api = super.haskell.lib.dontCheck (hpkgs.callCabal2nix "hackage-api" ./. {});
         in
           with super; with haskell.lib;
           {
